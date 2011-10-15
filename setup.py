@@ -29,6 +29,7 @@ setup(
     ],
     setup_requires = [],
     packages = find_packages(exclude=['ez_setup']),
+    scripts = ['scripts/ht-deploy'],
     include_package_data = True,
     platforms = ['UNIX'],
     classifiers = [

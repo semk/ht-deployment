@@ -1,0 +1,3 @@
+#! /bin/bash
+
+python -m "ht_deployment.__init__" $*
