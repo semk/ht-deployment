@@ -350,10 +350,14 @@ if __name__ == '__main__':
         sys.exit(-1)
     else:
         action = sys.argv[1]
-    update_roles(master=sys.argv[2], slaves=sys.argv[3])
+    update_roles(master=sys.argv[2], slaves=sys.argv[3].split(','))
     print '--> Running action', action
-    globals().get(action, 'dist')()
-    disconnect_all()
+    operation = globals().get(action, None)
+    if operation:
+        operation()
+        disconnect_all()
+    else:
+        print '--> ERROR: Action %s is undefined' %action
 else:
     # use with fab tool
     update_roles(master='172.16.5.125', slaves=['172.16.5.124'])
